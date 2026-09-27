@@ -21,6 +21,8 @@ SKILL.md                              ← 执行版纪律（分档 / 预算 / �
 reference/manual.md                   ← 完整手册（算子现状、各库语法、模板库、来源、存疑项）
 templates/agent-dispatch-tiering.md   ← 写进「编排者」的指令（控制点在这里）
 templates/agent-append.example.md     ← 追加到「检索子 agent」的提示词（执行端兜底）
+portable/PLATFORMS.md                 ← 【跨平台】各平台接入指南（放哪 / 叫什么 / 什么格式）
+portable/chat-only-prompt.md          ← 【无 agent】对话版 AI 直接可用的 prompt
 ```
 
 ## 核心 / Core idea
@@ -39,7 +41,14 @@ templates/agent-append.example.md     ← 追加到「检索子 agent」的提�
 | **L2 对比** | 需 ≥2 个来源，或要比较 / 汇总 | ≤3 轮 | 检索子 agent |
 | **L3 深挖** | 结论性 / 争议性判断、多源交叉 | ≤5 轮 + 1 轮证伪 | 检索子 agent |
 
-## 安装（opencode）/ Install
+## 安装 / Install
+
+> 🎯 **不在 OpenCode？** → [`portable/PLATFORMS.md`](portable/PLATFORMS.md)：Claude Code / OpenAI Codex / Cursor / DeepSeek Harness / WorkBuddy / Gemini CLI 的**确切路径与格式**。
+> 💬 **没有 agent，只能用对话版 AI？** → [`portable/chat-only-prompt.md`](portable/chat-only-prompt.md)（复制粘贴即可用）。
+
+> **好消息**：`<name>/SKILL.md` 已是 **Claude Code / OpenAI Codex / DeepSeek Harness / WorkBuddy** 的**共同约定** —— 本仓库的 `SKILL.md` 几乎**原样可移植**；且 `.agents/skills/` 这个路径被 Codex 与 DeepSeek Harness **同时支持**，一份可给两家用。
+
+### OpenCode（本仓库原生）
 
 1. 复制到全局 skill 目录：
    ```
@@ -54,7 +63,7 @@ templates/agent-append.example.md     ← 追加到「检索子 agent」的提�
 4. 把 `templates/agent-append.example.md` 并入**检索子 agent** 的提示词追加。
 5. **重启**（配置只在启动时加载一次）。
 
-> 非 opencode 环境：`SKILL.md` + `manual.md` 本身就是纯 markdown 纪律，可直接喂进任意 agent 的 system prompt。
+> 其它平台：`SKILL.md` + `manual.md` 的**内容平台中立**，平台只决定"放哪、叫什么" —— 见 [`portable/PLATFORMS.md`](portable/PLATFORMS.md)。
 
 ## 诚实的限制 / Honest limitations
 
